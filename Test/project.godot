@@ -11,7 +11,7 @@ config_version=3
 [application]
 
 config/name="Test"
-run/main_scene="res://scenes/Bezier.tscn"
+run/main_scene="res://scenes/World.tscn"
 config/icon="res://icon.png"
 run/stdout/print_fps=false
 

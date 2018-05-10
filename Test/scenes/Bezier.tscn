@@ -6,41 +6,64 @@
 
 bake_interval = 5.0
 _data = {
-"points": PoolVector2Array( 0, 0, 236.001, -55.0002, 515.077, 54.5849, 0, 0, 87.0004, 103, 825.077, 84.5849, 0, 0, -28.0001, 79.0003, 875.077, 254.585, 0, 0, -73.1306, 9.97236, 785.077, 334.585, 0, 0, 0, 0, 595.077, 284.585 )
+"points": PoolVector2Array( 0, 0, 236.001, -55.0002, 0, 56, 0, 0, 94.3514, 80.9471, 312, 80, 0, 0, -24.683, 73.0295, 368, 248, 0, 0, -73.1306, 9.97236, 272, 336, 0, 0, 0, 0, 80, 288 )
 }
 
 [sub_resource type="Curve2D" id=2]
 
 bake_interval = 5.0
 _data = {
-"points": PoolVector2Array( 0, 0, 61.5431, -94.6521, 515.077, 164.585, 0, 0, 151.734, 1.62902, 715.077, 84.5849, 0, 0, 20.4987, 109.696, 885.077, 214.585, 0, 0, 0, 0, 885.077, 364.585 )
+"points": PoolVector2Array( 0, 0, 61.5431, -94.6521, 0, 160, 0, 0, 151.734, 1.62902, 200, 80, 0, 0, 20.4987, 109.696, 376, 208, 0, 0, 0, 0, 376, 368 )
 }
 
 [sub_resource type="Curve2D" id=3]
 
 bake_interval = 5.0
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, 515.077, 354.585, 0, 0, 0, 0, 515.077, -135.415 )
+"points": PoolVector2Array( 0, 0, 0, 0, 0, 376, 0, 0, 0, 0, 0, -136 )
 }
 
 [node name="Bezier" type="Node2D" index="0"]
 
-position = Vector2( -35.0774, 15.4151 )
 script = ExtResource( 1 )
+_sections_unfolded = [ "Transform" ]
 SEGMENT_COUNT = 50
 BEND_DURATION = 3.0
-RECOVER_DURATION = 2.0
+RECOVER_DURATION = 1.5
 
-[node name="P1" type="Position2D" parent="." index="0"]
+[node name="BendTween" type="Tween" parent="." index="0"]
+
+repeat = false
+playback_process_mode = 1
+playback_speed = 1.0
+playback/active = false
+playback/repeat = false
+playback/speed = 1.0
+
+[node name="RecoverTween" type="Tween" parent="." index="1"]
+
+repeat = false
+playback_process_mode = 1
+playback_speed = 1.0
+playback/active = false
+playback/repeat = false
+playback/speed = 1.0
+
+[node name="Points" type="Node2D" parent="." index="2"]
 
 editor/display_folded = true
-position = Vector2( 515.077, 54.5849 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="P1" type="Position2D" parent="Points" index="0"]
+
+editor/display_folded = true
+position = Vector2( 0, 56 )
 _sections_unfolded = [ "Transform" ]
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Label" type="Label" parent="P1" index="0"]
+[node name="Label" type="Label" parent="Points/P1" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -64,16 +87,16 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "Rect" ]
 
-[node name="P2" type="Position2D" parent="." index="1"]
+[node name="P2" type="Position2D" parent="Points" index="1"]
 
 editor/display_folded = true
-position = Vector2( 515.077, 164.585 )
-scale = Vector2( 1.02703, 1 )
+position = Vector2( 0, 160 )
+_sections_unfolded = [ "Transform" ]
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Label" type="Label" parent="P2" index="0"]
+[node name="Label" type="Label" parent="Points/P2" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -94,16 +117,16 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
-[node name="P3" type="Position2D" parent="." index="2"]
+[node name="P3" type="Position2D" parent="Points" index="2"]
 
 editor/display_folded = true
-position = Vector2( 515.077, 354.585 )
+position = Vector2( 0, 376 )
 _sections_unfolded = [ "Transform" ]
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Label" type="Label" parent="P3" index="0"]
+[node name="Label" type="Label" parent="Points/P3" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -124,16 +147,16 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
-[node name="P4" type="Position2D" parent="." index="3"]
+[node name="P4" type="Position2D" parent="Points" index="3"]
 
 editor/display_folded = true
-position = Vector2( 515.077, 524.585 )
+position = Vector2( 0, 552 )
 _sections_unfolded = [ "Transform" ]
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Label" type="Label" parent="P4" index="0"]
+[node name="Label" type="Label" parent="Points/P4" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -154,7 +177,7 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
-[node name="Tween" type="Tween" parent="P4" index="1"]
+[node name="Tween" type="Tween" parent="Points/P4" index="1"]
 
 repeat = false
 playback_process_mode = 1
@@ -163,7 +186,12 @@ playback/active = false
 playback/repeat = false
 playback/speed = 1.0
 
-[node name="Path P1" type="Path2D" parent="." index="4"]
+[node name="Paths" type="Node2D" parent="." index="3"]
+
+editor/display_folded = true
+_sections_unfolded = [ "Transform" ]
+
+[node name="PathP1" type="Path2D" parent="Paths" index="0"]
 
 editor/display_folded = true
 curve = SubResource( 1 )
@@ -172,10 +200,9 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="PathFollow2D" type="PathFollow2D" parent="Path P1" index="0"]
+[node name="PathFollow2D" type="PathFollow2D" parent="Paths/PathP1" index="0"]
 
-editor/display_folded = true
-position = Vector2( 515.077, 54.5849 )
+position = Vector2( 0, 56 )
 offset = 0.0
 h_offset = 0.0
 v_offset = 0.0
@@ -183,31 +210,31 @@ rotate = false
 cubic_interp = true
 loop = false
 lookahead = 4.0
+_sections_unfolded = [ "Transform" ]
 
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Path P1/PathFollow2D" index="0"]
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Paths/PathP1/PathFollow2D" index="0"]
 
-remote_path = NodePath("../../../P1")
+remote_path = NodePath("../../../../Points/P1")
 use_global_coordinates = true
 update_position = true
 update_rotation = true
 update_scale = true
+_sections_unfolded = [ "Transform" ]
 
-[node name="Path P2" type="Path2D" parent="." index="5"]
+[node name="PathP2" type="Path2D" parent="Paths" index="1"]
 
 editor/display_folded = true
 modulate = Color( 1, 1, 0, 1 )
 self_modulate = Color( 1, 1, 0, 1 )
-position = Vector2( -13.9215, 0 )
-scale = Vector2( 1.02703, 1 )
 curve = SubResource( 2 )
-_sections_unfolded = [ "Visibility" ]
+_sections_unfolded = [ "Transform", "Visibility" ]
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="PathFollow2D" type="PathFollow2D" parent="Path P2" index="0"]
+[node name="PathFollow2D" type="PathFollow2D" parent="Paths/PathP2" index="0"]
 
-position = Vector2( 515.077, 164.585 )
+position = Vector2( 0, 160 )
 offset = 0.0
 h_offset = 0.0
 v_offset = 0.0
@@ -215,29 +242,30 @@ rotate = false
 cubic_interp = true
 loop = false
 lookahead = 4.0
+_sections_unfolded = [ "Transform" ]
 
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Path P2/PathFollow2D" index="0"]
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Paths/PathP2/PathFollow2D" index="0"]
 
-remote_path = NodePath("../../../P2")
+remote_path = NodePath("../../../../Points/P2")
 use_global_coordinates = true
 update_position = true
 update_rotation = true
 update_scale = true
 
-[node name="Path P3" type="Path2D" parent="." index="6"]
+[node name="PathP3" type="Path2D" parent="Paths" index="2"]
 
 editor/display_folded = true
 modulate = Color( 1, 0, 0, 1 )
 self_modulate = Color( 1, 0, 0, 1 )
 curve = SubResource( 3 )
-_sections_unfolded = [ "Visibility" ]
+_sections_unfolded = [ "Transform", "Visibility" ]
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="PathFollow2D" type="PathFollow2D" parent="Path P3" index="0"]
+[node name="PathFollow2D" type="PathFollow2D" parent="Paths/PathP3" index="0"]
 
-position = Vector2( 515.077, 354.585 )
+position = Vector2( 0, 376 )
 offset = 0.0
 h_offset = 0.0
 v_offset = 0.0
@@ -245,22 +273,16 @@ rotate = false
 cubic_interp = true
 loop = false
 lookahead = 4.0
+_sections_unfolded = [ "Transform" ]
 
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Path P3/PathFollow2D" index="0"]
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Paths/PathP3/PathFollow2D" index="0"]
 
-remote_path = NodePath("../../../P3")
+remote_path = NodePath("../../../../Points/P3")
 use_global_coordinates = true
 update_position = true
 update_rotation = true
 update_scale = true
 
-[node name="Tween" type="Tween" parent="." index="7"]
-
-repeat = false
-playback_process_mode = 1
-playback_speed = 1.0
-playback/active = false
-playback/repeat = false
-playback/speed = 1.0
+[connection signal="tween_completed" from="RecoverTween" to="." method="_on_RecoverTween_tween_completed"]
 
 
