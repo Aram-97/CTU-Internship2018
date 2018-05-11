@@ -26,22 +26,25 @@ func _process(delta):
 	calculate_curve()
 	update()
 	
-	if direction != 0:
-		Paths.scale.x = direction
-	
 	if Input.is_action_pressed("ui_right"):
 		assign_direction(1)
-		if direction == 1 and not BendTween.is_active():
+		if direction == 1:
+			Paths.scale.x = direction
 			bend([PathP1, PathP2, PathP3], BEND_DURATION)
-	elif Input.is_action_just_released("ui_right"):
-		recover([PathP1, PathP2, PathP3], RECOVER_DURATION)
+		elif direction == -1 and Input.is_action_just_released("ui_left"):
+			recover([PathP1, PathP2, PathP3], RECOVER_DURATION*2/3, Tween.EASE_IN)
 	
 	if Input.is_action_pressed("ui_left"):
 		assign_direction(-1)
-		if direction == -1 and not BendTween.is_active():
+		if direction == -1:
+			Paths.scale.x = direction
 			bend([PathP1, PathP2, PathP3], BEND_DURATION)
-	elif Input.is_action_just_released("ui_left"):
-		recover([PathP1, PathP2, PathP3], RECOVER_DURATION)
+		elif Input.is_action_just_released("ui_right"):
+			recover([PathP1, PathP2, PathP3], RECOVER_DURATION*2/3, Tween.EASE_IN)
+	
+	if not (Input.is_action_pressed("ui_right") or Input.is_action_pressed("ui_left")):
+		if direction != 0:
+			recover([PathP1, PathP2, PathP3], RECOVER_DURATION, Tween.EASE_OUT)
 	pass
 
 func _draw():
@@ -63,29 +66,37 @@ func _draw():
 		draw_line(bezier_curve[i], bezier_curve[i+1], Color(1.0, 1.0, 1.0), 1.5, true)
 	pass
 
+# Signal function connected from RecoverTween
+func _on_RecoverTween_tween_completed(object, key):
+	if direction != 0:
+		direction = 0
+	pass # replace with function body
+
 func assign_direction(dir):
-	if self.direction == 0:
+	if direction == 0:
 		direction = dir
 	pass
 
 func bend(paths, duration):
-	RecoverTween.remove_all()
-	for i in range(paths.size()):
-		var current_offset = paths[i].unit_offset
-		BendTween.interpolate_property(paths[i], "unit_offset", current_offset, 1,
-						(1-current_offset) * duration, Tween.TRANS_CUBIC, Tween.EASE_OUT)
-	
-	BendTween.start()
+	if not BendTween.is_active():
+		RecoverTween.remove_all()
+		for i in range(paths.size()):
+			var current_offset = paths[i].unit_offset
+			BendTween.interpolate_property(paths[i], "unit_offset", current_offset, 1,
+							(1-current_offset) * duration, Tween.TRANS_CUBIC, Tween.EASE_OUT)
+		
+		BendTween.start()
 	pass
 
-func recover(paths, duration):
-	BendTween.remove_all()
-	for i in range(paths.size()):
-		var current_offset = paths[i].unit_offset
-		RecoverTween.interpolate_property(paths[i], "unit_offset", current_offset, 0,
-						current_offset * duration, Tween.TRANS_CUBIC, Tween.EASE_IN)
-	
-	RecoverTween.start()
+func recover(paths, duration, ease_type):
+	if not RecoverTween.is_active():
+		BendTween.remove_all()
+		for i in range(paths.size()):
+			var current_offset = paths[i].unit_offset
+			RecoverTween.interpolate_property(paths[i], "unit_offset", current_offset, 0,
+							current_offset * duration, Tween.TRANS_CUBIC, ease_type)
+		
+		RecoverTween.start()
 	pass
 
 func calculate_curve():
@@ -102,8 +113,3 @@ func calculate_point(t, p1, p2, p3, p4):
 	var ttt = tt * t
 	
 	return uuu*p1 + 3*uu*t*p2 + 3*u*tt*p3 + ttt*p4
-
-func _on_RecoverTween_tween_completed(object, key):
-	if direction != 0:
-		direction = 0
-	pass # replace with function body

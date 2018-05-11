@@ -1,13 +1,39 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://sprites/spoon.png" type="Texture" id=1]
 
+[sub_resource type="Shader" id=1]
+
+code = "shader_type canvas_item;
+render_mode unshaded;
+
+uniform float array;
+
+void fragment() {
+//	vec2 uv = UV; 
+//	if (uv.y >= 0.5 && uv.y <= 0.51) {
+//		uv.x += sin(TIME*2.0)*0.2;
+//	}
+//	COLOR = texture(TEXTURE, uv); 
+}
+
+void vertex() {
+	
+}"
+
+[sub_resource type="ShaderMaterial" id=2]
+
+render_priority = 0
+shader = SubResource( 1 )
+shader_param/array = 0.0
+_sections_unfolded = [ "shader_param" ]
+
 [node name="Spoon" type="Sprite"]
 
-position = Vector2( 512, 300 )
+material = SubResource( 2 )
+position = Vector2( 490.08, 282.975 )
 scale = Vector2( 0.4, 0.4 )
 texture = ExtResource( 1 )
-offset = Vector2( 10, 0 )
-_sections_unfolded = [ "Material", "Offset", "Transform" ]
+_sections_unfolded = [ "Material", "Offset", "Transform", "Visibility" ]
 
 
