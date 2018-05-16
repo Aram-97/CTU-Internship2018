@@ -8,10 +8,7 @@ path.etc2="res://.import/scratched-metal-texture.jpg-8876736ebc00d05e562f718eb34
 [deps]
 
 source_file="res://textures/scratched-metal-texture.jpg"
-source_md5="467e0017dae365efc703e0241b2b80b6"
-
 dest_files=[ "res://.import/scratched-metal-texture.jpg-8876736ebc00d05e562f718eb3438d2a.s3tc.stex", "res://.import/scratched-metal-texture.jpg-8876736ebc00d05e562f718eb3438d2a.etc2.stex" ]
-dest_md5="8a0c0e03f26f637210e20be0b96ebb4e"
 
 [params]
 

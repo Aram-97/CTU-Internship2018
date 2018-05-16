@@ -28,12 +28,72 @@ shader = SubResource( 1 )
 shader_param/array = 0.0
 _sections_unfolded = [ "shader_param" ]
 
-[node name="Spoon" type="Sprite"]
-
+[node name="Spoon" type="Node2D" index="0"]
 material = SubResource( 2 )
-position = Vector2( 490.08, 282.975 )
-scale = Vector2( 0.4, 0.4 )
-texture = ExtResource( 1 )
 _sections_unfolded = [ "Material", "Offset", "Transform", "Visibility" ]
 
+[node name="Polygon2D" type="Polygon2D" parent="." index="0"]
+z_index = -1
+polygon = PoolVector2Array( 583.345, -8.50497, 678.849, 32.7938, 722.729, 185.083, 699.498, 337.372, 645.294, 383.834, 642.713, 479.337, 645.294, 574.841, 645.294, 703.899, 655.618, 856.189, 671.105, 995.572, 684.011, 1142.7, 627.225, 1204.65, 508.491, 1189.16, 508.491, 1085.91, 523.979, 920.718, 529.141, 783.916, 534.303, 639.37, 529.141, 510.311, 531.722, 373.509, 451.706, 280.587, 454.287, 125.716, 495.586, 17.3068 )
+uv = PoolVector2Array( 583.345, -8.50497, 678.849, 32.7938, 722.729, 185.083, 699.498, 337.372, 645.294, 383.834, 642.713, 479.337, 645.294, 574.841, 645.294, 703.899, 655.618, 856.189, 671.105, 995.572, 684.011, 1142.7, 627.225, 1204.65, 508.491, 1189.16, 508.491, 1085.91, 523.979, 920.718, 529.141, 783.916, 534.303, 639.37, 529.141, 510.311, 531.722, 373.509, 451.706, 280.587, 454.287, 125.716, 495.586, 17.3068 )
+splits = PoolIntArray( 10, 12, 10, 13, 9, 13, 9, 14, 8, 14, 8, 15, 7, 15, 7, 16, 6, 16, 6, 17, 5, 17, 5, 18, 4, 18 )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = ExtResource( 1 )
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation_degrees = 0.0
+skeleton = NodePath("../Skeleton2D")
+invert_enable = false
+invert_border = 100.0
+bones = [ NodePath("Base"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.47, 0.47, 0.47, 0.47, 0.94, 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("Base/Bone2D"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0.47, 0.47, 0, 0, 0, 0.47, 0.47, 0, 0, 0, 0, 0, 0, 0 ), NodePath("Base/Bone2D/Bone2D"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0.47, 0.47, 0.47, 0, 0, 0, 0, 0.47, 0.47, 0, 0, 0, 0, 0, 0 ), NodePath("Base/Bone2D/Bone2D/Bone2D"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0.47, 0.47, 0, 0, 0, 0, 0, 0, 0, 0.47, 0.47, 0, 0, 0, 0, 0 ), NodePath("Base/Bone2D/Bone2D/Bone2D/Bone2D"), PoolRealArray( 0, 0, 0, 0, 0.47, 0.47, 0.47, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.47, 0.47, 0, 0, 0 ) ]
+_sections_unfolded = [ "Skeleton", "Texture", "Z Index" ]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Skeleton2D" type="Skeleton2D" parent="." index="1"]
+__meta__ = {
+"_edit_bone_": true
+}
+
+[node name="Base" type="Bone2D" parent="Skeleton2D" index="0"]
+position = Vector2( 592, 1136 )
+rest = Transform2D( 1, 0, 0, 1, 592, 1136 )
+default_length = 16.0
+__meta__ = {
+"_edit_ik_": true
+}
+
+[node name="Bone2D" type="Bone2D" parent="Skeleton2D/Base" index="0"]
+position = Vector2( -8, -136 )
+rest = Transform2D( 1, 0, 0, 1, -8, -136 )
+default_length = 16.0
+
+[node name="Bone2D" type="Bone2D" parent="Skeleton2D/Base/Bone2D" index="0"]
+position = Vector2( 0, -128 )
+rest = Transform2D( 1, 0, 0, 1, 0, -128 )
+default_length = 16.0
+
+[node name="Bone2D" type="Bone2D" parent="Skeleton2D/Base/Bone2D/Bone2D" index="0"]
+position = Vector2( 0, -152 )
+rest = Transform2D( 1, 0, 0, 1, 0, -152 )
+default_length = 16.0
+
+[node name="Bone2D" type="Bone2D" parent="Skeleton2D/Base/Bone2D/Bone2D/Bone2D" index="0"]
+position = Vector2( 138.729, -80 )
+rotation = -0.261799
+rest = Transform2D( 1, 0, 0, 1, 0, -144 )
+default_length = 16.0
+__meta__ = {
+"_edit_bone_": true
+}
+
+[node name="Position2D" type="Position2D" parent="Skeleton2D/Base/Bone2D/Bone2D/Bone2D/Bone2D" index="0"]
+position = Vector2( 0, -192 )
+__meta__ = {
+"_edit_bone_": true
+}
 
