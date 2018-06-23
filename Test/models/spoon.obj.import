@@ -9,7 +9,10 @@ path="res://.import/spoon.obj-f562d5433f63a95040fbebd894a493ee.mesh"
 files=[ "res://.import/spoon.obj-f562d5433f63a95040fbebd894a493ee.mesh" ]
 
 source_file="res://models/spoon.obj"
+source_md5="4d0b461a8c267b843acd7c560c13b0f0"
+
 dest_files=[ "res://.import/spoon.obj-f562d5433f63a95040fbebd894a493ee.mesh", "res://.import/spoon.obj-f562d5433f63a95040fbebd894a493ee.mesh" ]
+dest_md5="dad6bec8651805d0c260486b3decca22"
 
 [params]
 

@@ -1,4 +1,3 @@
-tool
 extends Node2D
 
 onready var P1 = get_node("P1")

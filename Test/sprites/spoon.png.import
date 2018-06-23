@@ -7,7 +7,10 @@ path="res://.import/spoon.png-f8e7371ebe402524d0d2e46f0eb99d1e.stex"
 [deps]
 
 source_file="res://sprites/spoon.png"
+source_md5="34c8de05c189449cd4943bba719e3a10"
+
 dest_files=[ "res://.import/spoon.png-f8e7371ebe402524d0d2e46f0eb99d1e.stex" ]
+dest_md5="cfcb2d0b3842f256779bbee0fd69b2aa"
 
 [params]
 

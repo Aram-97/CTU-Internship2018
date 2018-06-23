@@ -7,7 +7,10 @@ path="res://.import/capsule.png-545485bfa0b1bab4fd8f94a54a7afec5.stex"
 [deps]
 
 source_file="res://sprites/capsule.png"
+source_md5="a14cf8a1df808aa0b812c31438615ea4"
+
 dest_files=[ "res://.import/capsule.png-545485bfa0b1bab4fd8f94a54a7afec5.stex" ]
+dest_md5="0bcd7b6e02b5b83529426b3ab7a88f73"
 
 [params]
 
